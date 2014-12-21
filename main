@@ -1,0 +1,65 @@
+package simplegame;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Random;
+
+/**
+ * Einfaches Spiel - Der Spiel soll die Zahl erraten.
+ *
+ * @author Monika Dmytruszkiewicz
+ *
+ * @version 1.0
+ */
+
+public class Main {
+/**
+*  @param args
+*  @throws IOException
+*  @throws NumberFormatException
+*/
+    public static void main(String[] args) throws NumberFormatException, IOException  {
+        // Initialisierung der Variable reader, hier wird gespeichert die Eingabe der Spieler
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        boolean ergebnis = false;
+        int i =1;
+        Random rand = new Random();
+        int zahl = rand.nextInt(100);
+        System.out.print("ERRATE DIE ZAHL \n");
+        /**
+        *
+        * @param zahl natürliche Zufallszahl zwischen 1-100
+        *
+        */
+        while (ergebnis==false)
+        {
+            // Info-Ausgabe Zahlen Bereich 1-100 und Eingabe Einforderung 
+            System.out.print("Gebe eine Zahl zwischen 0-100 ein: ");
+            //Die eingegebene Zahl wird eingelesen und in der Integer Variable deine_zahl gespeichert
+            int deine_zahl = Integer.parseInt(reader.readLine());
+            if(deine_zahl > 100 || deine_zahl < 0){
+                System.out.println("Deine Zahl liegt nicht in eingeschränkten Bereich");
+            }else{
+            if(deine_zahl==zahl)
+            {
+                //Falls die Zahlen übereinstimmen folgt die Ausgabe
+                System.out.println("Du hast die Zahl gefunden!!!");
+                System.out.println("Du hast "+i+" Versuche gebraucht");
+                ergebnis=true;
+            }
+            else if (deine_zahl>zahl)
+            {
+                System.out.println("Deine Zahl ist zu hoch.");
+                ergebnis=false;
+                i++;
+            }
+            else if (deine_zahl<zahl)
+            {
+                System.out.println("Deine Zahl ist zu niedrig.");
+                ergebnis=false;
+                i++;
+            }}
+        }
+
+}}
